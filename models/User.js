@@ -26,6 +26,16 @@ User.init({
         }
     }
 },{
+    hooks:{
+        beforeCreate(newUser){
+            newUser.username = newUser.username.toLowerCase();
+            return newUser;
+        },
+        beforeUpdate(updatedUser){
+            updatedUser.username = updatedUser.username.toLowerCase();
+            return updatedUser;
+        }
+    },
     sequelize
 });
 
