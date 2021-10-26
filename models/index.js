@@ -1,3 +1,12 @@
 const User = require("./User");
+const Pet = require("./Pet");
 
-module.exports={User};
+User.hasMany(Pet,{
+    onDelete:"CASCADE"
+});
+Pet.belongsTo(User);
+
+module.exports={
+    User,
+    Pet
+};
