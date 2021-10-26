@@ -1,16 +1,19 @@
-var express = require('express');
+const express = require('express');
 const sequelize = require("./config/connection.js")
 // Sets up the Express App
 // =============================================================
-var app = express();
-var PORT = process.env.PORT || 3000;
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Requiring our models for syncing
-var {User} = require('./models');
+const {User} = require('./models');
+const routes = require("./controllers");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(routes)
 
 sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
