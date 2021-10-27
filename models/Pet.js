@@ -14,7 +14,7 @@ Pet.init({
       type:DataTypes.INTEGER
   },
 },{
-    sequelize
+    sequelize, 
 });
 
 module.exports=Pet

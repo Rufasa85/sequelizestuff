@@ -39,7 +39,7 @@ User.init({
             return updatedUser;
         }
     },
-    sequelize
+    sequelize,
 });
 
-module.exports=User
+module.exports = User;
