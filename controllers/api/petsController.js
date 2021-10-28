@@ -20,11 +20,14 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  if(!req.session.user){
+    return res.status(401).send("log in first you knucklehead!")
+  }
   Pet.create({
     name: req.body.name,
     species: req.body.species,
     age: req.body.age,
-    UserId:req.body.userId
+    UserId:req.session.user.id
   })
     .then(newPet => {
       res.json(newPet);
