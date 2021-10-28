@@ -43,6 +43,11 @@ router.post("/login",(req,res)=>{
             res.status(401).json({message:"incorrect email or password"})
         } else {
             if(bcrypt.compareSync(req.body.password,foundUser.password)){
+                req.session.user = {
+                    username:foundUser.username,
+                    email:foundUser.email,
+                    id:foundUser.id
+                }
                 res.json(foundUser)
             } else {
                 res.status(401).json({message:"incorrect email or password"})
