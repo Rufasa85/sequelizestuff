@@ -18,7 +18,7 @@ router.get("/",(req,res)=>{
 
 router.get("/profile",(req,res)=>{
     if(!req.session.user){
-        return res.status(401).send("login first!")
+        return res.redirect("/login")
     }
     User.findByPk(req.session.user.id,{
         include:[Pet]
